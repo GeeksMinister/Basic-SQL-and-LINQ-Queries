@@ -3,7 +3,7 @@ using System.Data;
 using System.Globalization;
 using System.Text;
 
-internal partial class Database
+internal static partial class Database
 {
     private static readonly string ConnectionString =
         "Server=(LocalDB)\\MSSQLLocalDB; Database=HappyValleyTest;" +
@@ -289,7 +289,6 @@ internal partial class Database
 
     private static void ConvertToABCD(ref string grade)
     {
-        //[1] = Avg,    [4] = MaleAvg,   [5] = FemaleAvg.
         switch (grade)
         {
             case "0":
@@ -388,94 +387,3 @@ internal partial class Database
         ExecuteSqlAndPrint(query);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-///* Males - Math*/
-//SELECT AVG(CASE
-//WHEN Grade = 'F' THEN 0 
-//WHEN Grade = 'E' THEN 1
-//WHEN Grade = 'D' THEN 2
-//WHEN Grade = 'C' THEN 3
-//WHEN Grade = 'B' THEN 4
-//WHEN Grade = 'A' THEN 5 
-//END) FROM Student, Math
-//WHERE SUBSTRING(Student.SSN, 9,1) % 2 != 0
-//AND Grade IS NOT NULL AND Math.StudentId = Student.id
-
-///* Females - Math*/
-//SELECT AVG(CASE
-//WHEN Grade = 'F' THEN 0 
-//WHEN Grade = 'E' THEN 1
-//WHEN Grade = 'D' THEN 2
-//WHEN Grade = 'C' THEN 3
-//WHEN Grade = 'B' THEN 4
-//WHEN Grade = 'A' THEN 5 
-//END) FROM Student, Math
-//WHERE SUBSTRING(Student.SSN, 9,1) % 2 = 0
-//AND Grade IS NOT NULL AND Math.StudentId = Student.id
-
-
-///*----------------*/
-
-
-///* Males - English*/
-//SELECT AVG(CASE
-//WHEN Grade = 'F' THEN 0 
-//WHEN Grade = 'E' THEN 1
-//WHEN Grade = 'D' THEN 2
-//WHEN Grade = 'C' THEN 3
-//WHEN Grade = 'B' THEN 4
-//WHEN Grade = 'A' THEN 5 
-//END) FROM Student, English
-//WHERE SUBSTRING(Student.SSN, 9,1) % 2 != 0
-//AND Grade IS NOT NULL AND English.StudentId = Student.id
-
-///* Females - English*/
-//SELECT AVG(CASE
-//WHEN Grade = 'F' THEN 0 
-//WHEN Grade = 'E' THEN 1
-//WHEN Grade = 'D' THEN 2
-//WHEN Grade = 'C' THEN 3
-//WHEN Grade = 'B' THEN 4
-//WHEN Grade = 'A' THEN 5 
-//END) FROM Student, English
-//WHERE SUBSTRING(Student.SSN, 9,1) % 2 = 0
-//AND Grade IS NOT NULL AND English.StudentId = Student.id
-
-
-///*----------------*/
-
-
-///* Males - Programming*/
-//SELECT AVG(CASE
-//WHEN Grade = 'F' THEN 0 
-//WHEN Grade = 'E' THEN 1
-//WHEN Grade = 'D' THEN 2
-//WHEN Grade = 'C' THEN 3
-//WHEN Grade = 'B' THEN 4
-//WHEN Grade = 'A' THEN 5 
-//END) FROM Student, Programming
-//WHERE SUBSTRING(Student.SSN, 9,1) % 2 != 0
-//AND Grade IS NOT NULL AND Programming.StudentId = Student.id
-
-///* Females - Programming*/
-//SELECT AVG(CASE
-//WHEN Grade = 'F' THEN 0 
-//WHEN Grade = 'E' THEN 1
-//WHEN Grade = 'D' THEN 2
-//WHEN Grade = 'C' THEN 3
-//WHEN Grade = 'B' THEN 4
-//WHEN Grade = 'A' THEN 5 
-//END) FROM Student, Programming
-//WHERE SUBSTRING(Student.SSN, 9,1) % 2 = 0
-//AND Grade IS NOT NULL AND Programming.StudentId = Student.id

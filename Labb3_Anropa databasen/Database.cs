@@ -5,7 +5,6 @@ using System.Text;
 
 internal static partial class Database
 {
-    
     public static void PrintMenu()
         
     {
@@ -154,6 +153,7 @@ internal static partial class Database
 
     private static void PrintEntitiesEF<T>(T table)
     {
+        Clear();
         if (table is IOrderedQueryable<Student>)
         {
             IOrderedQueryable<Student>? student = table as IOrderedQueryable<Student>;
@@ -207,7 +207,6 @@ internal static partial class Database
     
     private static string SortedByColumn()
     {
-        string sortBy;
         Clear();
         Write("\n\n\tHow would you like the rows to be sorted ?\n\n" +
             "\t[1] By First name\n\n" +
@@ -216,11 +215,9 @@ internal static partial class Database
         while ((choose < 1) || (choose > 2))
         {
             Write("\n\n\tPlease choose from 1 - 2 : ");
-
             int.TryParse(ReadLine(), out choose);
         }
-
-        return sortBy = (choose == 1) ? "First name" : "Last name";
+        return (choose == 1) ? "First name" : "Last name";
     }
 
     private static void InquireStudentInClass(string className)

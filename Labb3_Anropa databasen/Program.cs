@@ -1,6 +1,6 @@
 ﻿SetConsoleSize();
-Database.PrintMenu();
 
+Database.PrintMenu();
 
 
 static void SetConsoleSize()
